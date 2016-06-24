@@ -2,6 +2,8 @@ package view;
 
 import controller.TOperatore;
 import controller.TSegreteria;
+import model.Model;
+
 import java.util.Scanner;
 
 public class Selection {

@@ -2,10 +2,9 @@ package view;
 
 import java.util.*;
 
-import controller.CartellaClinica;
-import controller.PartecipazioneIntervento;
 import controller.Paziente;
 import controller.TOperatore;
+import model.Model;
 
 /**
  * @author Edoardo Chigini, Fabio Scapini
@@ -13,13 +12,16 @@ import controller.TOperatore;
 public abstract class Operatore {
 
 	protected Terminal terminal;
+	protected Model model;
     /**
      * Default constructor
      */
     public Operatore(TOperatore tipo) {
     	this.tipo = tipo;
     	terminal = new Terminal(this, tipo);
+    	model = new Model(terminal);
     	terminal.restart();
+    	
     }
 
     /**
@@ -31,22 +33,8 @@ public abstract class Operatore {
     	return terminal;
     }
     
-    public void esaminaCartella(String idRicovero) {
-        CartellaClinica cartella=new CartellaClinica(idRicovero);
-        cartella.printPaziente();
-        cartella.printDatiRicovero();
-        cartella.printEsami();
-        cartella.printInterventi();
-        cartella.printTerapie();
-    }
-    
-    protected void partecipazioneIntervento(String cf, String ci){
-    	PartecipazioneIntervento ioCero=new PartecipazioneIntervento(cf,ci);
-		if(ioCero.commit()==true)
-			terminal.setTerminal("Inserimento completato\n");
-		else
-			terminal.setTerminal("Inserimento fallito\n");
-    	
+    public void esaminaCartella(Paziente paziente) {
+        // TODO implement here
     }
 
     /**
